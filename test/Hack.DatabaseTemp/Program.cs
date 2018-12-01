@@ -18,8 +18,9 @@ namespace Hack.DatabaseTemp
             var database = new DatabaseWrapper("Data Source=TempDatabase.db; Version=3;new=False;datetimeformat=CurrentCulture;");
             string queryString;
 
-            // Create temporary schema
-            queryString = "create table PersonOfInterest(caseNo varchar(32), name varchar(64), dob char(10))";
+            // Test final schema
+            database.NonQuery("PRAGMA foreign_keys = ON;);
+            queryString = "create table PersonOfInterest(case varchar(32), name varchar(64), dob char(10))";
             database.NonQuery(queryString);
 
             // Example new PoI
