@@ -33,36 +33,36 @@ namespace Hack.DatabaseTemp
         }
     }
 
-    class DatabaseWrapper
+    public class DatabaseWrapper
     {
         private SQLiteConnection connection;
 
         public DatabaseWrapper(string connectionString)
         {
-            this.connection = new SQLiteConnection(connectionString);
+            Connection = new SQLiteConnection(connectionString);
         }
 
-        static void NonQuery(string query)
+        void NonQuery(string query)
         {
-            this.connection.Open();
-            var command = new SQLiteCommand(query, this.Connection);
+            Connection.Open();
+            var command = new SQLiteCommand(query, Connection);
             command.ExecuteNonQuery();
-            this.connection.Close();
+            Connection.Close();
         }
 
         SQLiteDataReader ReaderQuery(string query)
         {
-            this.connection.Open();
+            Connection.Open();
             var command = new SQLiteCommand(query, this.Connection);
             SQLiteDataReader reader = command.ExecuteReader();
-            this.connection.Close();
+            Connection.Close();
             return reader;
         }
 
         public SQLiteConnection Connection
         {
-            get { return this.connection; }
-            set { this.connection = value; }
+            get { return connection; }
+            set { connection = value; }
         }
     }
 }
