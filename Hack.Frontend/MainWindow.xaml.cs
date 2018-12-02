@@ -25,16 +25,41 @@ namespace Hack.Frontend
         {
             InitializeComponent();
 
-            databaseWrapper = new DatabaseWrapper("Data Source=C:/Users/Matthew Rimmer/Documents/GitHub/Hackathon/src/database.db;Version=3;new=False;");
-            var queryResult = databaseWrapper.ReaderQuery("SELECT * FROM PersonOfInterest");
+            databaseWrapper = new DatabaseWrapper("Data Source=C:/Users/Matthew Rimmer/Documents/GitHub/Hackathon/src/FinalDatabase.db;Version=3;new=False;");
+            var queryResult1 = databaseWrapper.ReaderQuery("SELECT * FROM PersonOfInterest");
 
-            PersonOfInterestDatagrid.ItemsSource = queryResult[0];
+            PersonOfInterestDatagrid.ItemsSource = queryResult1[0];
+
+            var queryResult2 = databaseWrapper.ReaderQuery("SELECT * FROM Address");
+
+            AddressDatagrid.ItemsSource = queryResult2[0];
+
+            var queryResult3 = databaseWrapper.ReaderQuery("SELECT * FROM PoliceCase");
+
+            PoliceCaseDatagrid.ItemsSource = queryResult3[0];
+
+            var queryResult4 = databaseWrapper.ReaderQuery("SELECT * FROM Contact");
+
+            ContactDatagrid.ItemsSource = queryResult4[0];
+
+            //var queryResult5 = databaseWrapper.ReaderQuery("SELECT * FROM ContactPoIRelationship");
+
+            //ContactPoIRelDatagrid.ItemsSource = queryResult5[0];
+
+            var queryResult6 = databaseWrapper.ReaderQuery("SELECT * FROM Report");
+
+            ReportDatagrid.ItemsSource = queryResult6[0];
+
+            //var queryResult7 = databaseWrapper.ReaderQuery("SELECT * FROM NewsArticles");
+
+            //NewsArticlesDatagrid.ItemsSource = queryResult7[0];
+
+            //var queryResult8 = databaseWrapper.ReaderQuery("SELECT * FROM SocialMediaPosts");
+
+            //SocialMediaPostsDatagrid.ItemsSource = personOfInterest.Incidents;
+
 
             personOfInterest = Person1;
-
-            InterestDatagrid.ItemsSource = personOfInterest.Incidents;
-
-
 
 
             PopulatePersons();  
@@ -219,6 +244,24 @@ namespace Hack.Frontend
             Clear();
             Draw((bool)PointBox.IsChecked, (bool)AreaBox.IsChecked);
             InterestDatagrid.ItemsSource = personOfInterest.Incidents;
+        }
+
+        private void PoI1(object sender, RoutedEventArgs e)
+        {
+            var queryResult1 = databaseWrapper.ReaderQuery("SELECT * FROM PersonOfInterest");
+            PersonOfInterestDatagrid.ItemsSource = queryResult1[0];
+        }
+
+        private void PoI2(object sender, RoutedEventArgs e)
+        {
+            var queryResult1 = databaseWrapper.ReaderQuery("SELECT * FROM PersonOfInterest");
+            PersonOfInterestDatagrid.ItemsSource = queryResult1[1];
+        }
+
+        private void PoI3(object sender, RoutedEventArgs e)
+        {
+            var queryResult1 = databaseWrapper.ReaderQuery("SELECT * FROM PersonOfInterest");
+            PersonOfInterestDatagrid.ItemsSource = queryResult1[2];
         }
     }
 }

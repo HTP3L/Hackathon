@@ -59,18 +59,58 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
-                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
 
+
+
+                    <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Label HorizontalAlignment="Center" VerticalAlignment="Top">Police Case</Label>
+                        <ComboBox HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <ComboBoxItem >1</ComboBoxItem>
+                            <ComboBoxItem >2</ComboBoxItem>
+                            <ComboBoxItem >3</ComboBoxItem>
+                        </ComboBox>
+                        <TextBox Height="150px">Add Case...</TextBox>
+                    </StackPanel>
                     <DataGrid x:Name="PoliceCaseDatagrid" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="1" />
+
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Label HorizontalAlignment="Center" VerticalAlignment="Top">Addresses</Label>
+                        <ComboBox HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <ComboBoxItem >1</ComboBoxItem>
+                            <ComboBoxItem >2</ComboBoxItem>
+                            <ComboBoxItem >3</ComboBoxItem>
+                        </ComboBox>
+                        <TextBox Height="150px">Add Address...</TextBox>
+                    </StackPanel>
                     <DataGrid x:Name="AddressDatagrid" Grid.Row="1" Grid.Column="1"/>
+
+                    <StackPanel Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Label HorizontalAlignment="Center" VerticalAlignment="Top">Person Of Interest</Label>
+                        <ComboBox x:Name="PoIComboBox" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <ComboBoxItem Selected="PoI1" >1</ComboBoxItem>
+                            <ComboBoxItem Selected="PoI2" >2</ComboBoxItem>
+                            <ComboBoxItem Selected="PoI3" >3</ComboBoxItem>
+                        </ComboBox>
+                        <TextBox Height="150px">Add PoI...</TextBox>
+                    </StackPanel>
                     <DataGrid x:Name="PersonOfInterestDatagrid" Grid.Row="1" Grid.Column="2"/>
+                    
                     <DataGrid x:Name="ContactDatagrid" Grid.Row="1" Grid.Column="3"/>
-                    <DataGrid x:Name="ContactPoIRelDatagrid" Grid.Row="1" Grid.Column="4"/>
-                    <DataGrid x:Name="ReportDatagrid" Grid.Row="1" Grid.Column="5"/>
-                    <DataGrid x:Name="NewsArticlesDatagrid" Grid.Row="1" Grid.Column="6"/>
-                    <DataGrid x:Name="SocialMediaPostsDatagrid" Grid.Row="1" Grid.Column="7"/>
+                    <DataGrid x:Name="ReportDatagrid" Grid.Row="1" Grid.Column="4"/>
+
+                    <StackPanel Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Label HorizontalAlignment="Center" VerticalAlignment="Top">News Article</Label>
+                        <ComboBox HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <ComboBoxItem >1</ComboBoxItem>
+                            <ComboBoxItem >2</ComboBoxItem>
+                            <ComboBoxItem >3</ComboBoxItem>
+                        </ComboBox>
+                        <TextBox Height="150px">Add Article...</TextBox>
+                    </StackPanel>
+                    <DataGrid x:Name="NewsArticlesDatagrid" Grid.Row="1" Grid.Column="5"/>
+                    <DataGrid x:Name="SocialMediaPostsDatagrid" Grid.Row="1" Grid.Column="6"/>
                 </Grid>
             </TabItem>
 
