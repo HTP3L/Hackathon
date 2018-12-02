@@ -11,10 +11,40 @@
         <local:MapViewModel x:Key="MapViewModel" />
     </Window.Resources>
     <Grid>
-        <esri:MapView Map="{Binding Map, Source={StaticResource MapViewModel}}">
-            <esri:MapView.GraphicsOverlays>
-                <esri:GraphicsOverlay x:Name="MapGraphics"/>
-            </esri:MapView.GraphicsOverlays>
-        </esri:MapView>
+        <TabControl>
+            <TabItem Header="Person Of Interest">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="112*"/>
+                        <RowDefinition Height="307*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <esri:MapView Map="{Binding Map, Source={StaticResource MapViewModel}}" HorizontalAlignment="Stretch" Grid.Row="1" Grid.Column="1" VerticalAlignment="Stretch">
+                        <esri:MapView.GraphicsOverlays>
+                            <esri:GraphicsOverlay x:Name="MapGraphics"/>
+                        </esri:MapView.GraphicsOverlays>
+                    </esri:MapView>
+                    <DataGrid x:Name="InterestDatagrid" HorizontalAlignment="Center" Height="100" VerticalAlignment="Top" Width="100" Grid.Column="1"/>
+                    <StackPanel Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <CheckBox Content="Points" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Checked="CheckBox_Checked"/>
+                        <CheckBox Content="General Area" Grid.Column="2" HorizontalAlignment="Center" Margin="0" Grid.Row="1" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Missing person">
+
+            </TabItem>
+            <TabItem Header="Suscpicous Individual">
+
+            </TabItem>
+
+        </TabControl>
     </Grid>
+    
 </Window>
