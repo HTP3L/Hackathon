@@ -3,6 +3,7 @@ using Esri.ArcGISRuntime.Symbology;
 using Esri.ArcGISRuntime.UI;
 using System.Windows;
 using System.Windows.Media;
+using Hack.Database;
 
 
 namespace Hack.Frontend
@@ -13,43 +14,95 @@ namespace Hack.Frontend
     public partial class MainWindow : Window
     {
 
-        PersonOfInterest personOfInterest = new PersonOfInterest();
+        PersonOfInterest personOfInterest;
+        Database.DatabaseWrapper databaseWrapper;
+
+        PersonOfInterest Person1 = new PersonOfInterest();
+        PersonOfInterest Person2 = new PersonOfInterest();
+        PersonOfInterest Person3 = new PersonOfInterest();
 
         public MainWindow()
         {
             InitializeComponent();
 
+            databaseWrapper = new DatabaseWrapper("Data Source=C:/Users/Matthew Rimmer/Documents/GitHub/Hackathon/src/database.db;Version=3;new=False;");
+            var queryResult = databaseWrapper.ReaderQuery("SELECT * FROM PersonOfInterest");
+
+            PersonOfInterestDatagrid.ItemsSource = queryResult[0];
+
+            personOfInterest = Person1;
+
             InterestDatagrid.ItemsSource = personOfInterest.Incidents;
 
-            personOfInterest.Incidents.Add(new Incident
+
+
+
+            PopulatePersons();  
+
+            
+        }
+
+        private void PopulatePersons()
+        {
+            //Person 1
+            Person1.Incidents.Add(new Incident
             {
                 XCoord = -0.600128,
                 YCoord = 53.328413
             });
 
 
-            personOfInterest.Incidents.Add(new Incident
+            Person1.Incidents.Add(new Incident
             {
                 XCoord = -0.549316,
                 YCoord = 53.342763
             });
 
-            personOfInterest.Incidents.Add(new Incident
+            Person1.Incidents.Add(new Incident
             {
                 XCoord = -0.469666,
                 YCoord = 53.304621
             });
 
-            personOfInterest.Incidents.Add(new Incident
+            Person1.Incidents.Add(new Incident
             {
                 XCoord = -0.523911,
                 YCoord = 53.231523
             });
 
+            //Person 2 
 
-            
+            Person2.Incidents.Add(new Incident
+            {
+                XCoord = -0.412448,
+                YCoord = 53.391794
+            });
+            Person2.Incidents.Add(new Incident
+            {
+                XCoord = -0.933838,
+                YCoord = 53.279995
+            });
+            Person2.Incidents.Add(new Incident
+            {
+                XCoord = -1.101379,
+                YCoord = 52.915527
+            });
+            Person2.Incidents.Add(new Incident
+            {
+                XCoord = -0.675659,
+                YCoord = 52.737955
+            });
+            Person2.Incidents.Add(new Incident
+            {
+                XCoord = -0.362549,
+                YCoord = 52.835958
+            });
+            Person2.Incidents.Add(new Incident
+            {
+                XCoord = -0.214233,
+                YCoord = 53.057723
+            });
 
-            
         }
 
         private void Clear()
@@ -145,6 +198,27 @@ namespace Hack.Frontend
         {
             Clear();
             Draw((bool)PointBox.IsChecked, (bool)AreaBox.IsChecked);
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Person1_Checked(object sender, RoutedEventArgs e)
+        {
+            personOfInterest = Person1;
+            Clear();
+            Draw((bool)PointBox.IsChecked, (bool)AreaBox.IsChecked);
+            InterestDatagrid.ItemsSource = personOfInterest.Incidents;
+        }
+
+        private void Person2_Checked(object sender, RoutedEventArgs e)
+        {
+            personOfInterest = Person2;
+            Clear();
+            Draw((bool)PointBox.IsChecked, (bool)AreaBox.IsChecked);
+            InterestDatagrid.ItemsSource = personOfInterest.Incidents;
         }
     }
 }
