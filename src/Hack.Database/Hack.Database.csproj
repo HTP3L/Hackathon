@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="database.db" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="SQLite" Version="3.13.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.5.1" />
     <PackageReference Include="System.Data.SQLite" Version="1.0.109.2" />
