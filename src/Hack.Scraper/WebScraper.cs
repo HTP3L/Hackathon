@@ -11,6 +11,8 @@ namespace WebScraper
     {
         public Article[] Articles;
 
+        public string ArticleText;
+
         public async void GetNews(string user_input, int ResultNum)
         {
             // Getting news from DailyMail
@@ -43,6 +45,7 @@ namespace WebScraper
 
         public async void GetArticle(string user_input, int chosen_article)
         {
+            ArticleText = "";
             // Getting individual article from DailyMail
             user_input.Replace(@" ", "+");
             var url = "https://www.dailymail.co.uk/home/search.html?sel=site&size=" + chosen_article + "&searchPhrase=" + user_input + "&sort=relevant";
@@ -74,8 +77,7 @@ namespace WebScraper
                                 ProductListItems = ProductsHtml[0].Descendants("p").ToList();
                                 foreach (var Paragraph in ProductListItems)
                                 {
-                                    Console.WriteLine(Paragraph.InnerText);
-                                    Console.WriteLine();
+                                    ArticleText += Paragraph.InnerText;
                                 }
                                 break;
                             }

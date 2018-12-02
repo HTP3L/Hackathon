@@ -4,7 +4,7 @@ using Esri.ArcGISRuntime.UI;
 using System.Windows;
 using System.Windows.Media;
 using Hack.Database;
-
+using System.Collections.ObjectModel;
 
 namespace Hack.Frontend
 {
@@ -16,6 +16,8 @@ namespace Hack.Frontend
 
         PersonOfInterest personOfInterest;
         Database.DatabaseWrapper databaseWrapper;
+        WebScraper webScraper;
+        ObservableCollection<Article> articles = new ObservableCollection<Article>();
 
         PersonOfInterest Person1 = new PersonOfInterest();
         PersonOfInterest Person2 = new PersonOfInterest();
@@ -198,7 +200,17 @@ namespace Hack.Frontend
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Draw((bool)PointBox.IsChecked, (bool)AreaBox.IsChecked);
+            PointBox.IsChecked = true;
+            AreaBox.IsChecked = true;
+
+
+
+
+
+
+            //ScraperDatagrid.ItemsSource = WebScraper.Webscraper
+
+            
         }
 
         private void PointBox_Checked(object sender, RoutedEventArgs e)
@@ -262,6 +274,37 @@ namespace Hack.Frontend
         {
             var queryResult1 = databaseWrapper.ReaderQuery("SELECT * FROM PersonOfInterest");
             PersonOfInterestDatagrid.ItemsSource = queryResult1[2];
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (Article article in webScraper.Articles)
+            {
+                articles.Add(article);
+
+            }
+
+            ScraperDatagrid.ItemsSource = articles;
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            webScraper = new WebScraper();
+
+            webScraper.GetNews(ArticleTextTextbox.Text, int.Parse(ArticleCountTextbox.Text));
+
+
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            webScraper.GetArticle(ArticleTextTextbox.Text, int.Parse(ArticleNumberSelectTextbox.Text));
+
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            MainTextBox.Text = webScraper.ArticleText;
         }
     }
 }
