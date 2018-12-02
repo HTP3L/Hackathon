@@ -32,12 +32,18 @@
                     </esri:MapView>
                     <DataGrid x:Name="InterestDatagrid" DataContext="{ Binding personOfInterest.Incidents }" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1"/>
                     <StackPanel Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <CheckBox Content="Points" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Checked="CheckBox_Checked"/>
-                        <CheckBox Content="General Area" Grid.Column="2" HorizontalAlignment="Center" Margin="0" Grid.Row="1" VerticalAlignment="Center"/>
+                        <CheckBox x:Name="PointBox" IsChecked="False" Content="Points" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Checked="PointBox_Checked" Unchecked="PointBox_Unchecked"/>
+                        <CheckBox x:Name="AreaBox" IsChecked="False" Content="General Area" Grid.Column="2" HorizontalAlignment="Center" Margin="0" Grid.Row="1" VerticalAlignment="Center" Checked="General_Checked" Unchecked="AreaBox_Unchecked"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <RadioButton Content="Person 1"/>
+                        <RadioButton Content="Person 2"/>
+                        <RadioButton Content="Person 3"/>
                     </StackPanel>
                 </Grid>
             </TabItem>
-            <TabItem Header="Missing person">
+            <TabItem Header="Web Crawler">
 
             </TabItem>
             <TabItem Header="Suscpicous Individual">
