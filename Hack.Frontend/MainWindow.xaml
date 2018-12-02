@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Hack.Frontend"
         xmlns:esri="http://schemas.esri.com/arcgis/runtime/2013"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded" WindowState="Maximized">
     <Window.Resources>
         <local:MapViewModel x:Key="MapViewModel" />
     </Window.Resources>
@@ -30,7 +30,7 @@
                             <esri:GraphicsOverlay x:Name="MapGraphics"/>
                         </esri:MapView.GraphicsOverlays>
                     </esri:MapView>
-                    <DataGrid x:Name="InterestDatagrid" HorizontalAlignment="Center" Height="100" VerticalAlignment="Top" Width="100" Grid.Column="1"/>
+                    <DataGrid x:Name="InterestDatagrid" DataContext="{ Binding personOfInterest.Incidents }" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1"/>
                     <StackPanel Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <CheckBox Content="Points" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Checked="CheckBox_Checked"/>
                         <CheckBox Content="General Area" Grid.Column="2" HorizontalAlignment="Center" Margin="0" Grid.Row="1" VerticalAlignment="Center"/>
