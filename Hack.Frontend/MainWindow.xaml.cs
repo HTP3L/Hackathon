@@ -64,9 +64,9 @@ namespace Hack.Frontend
             personOfInterest = Person1;
 
 
-            PopulatePersons();  
+            PopulatePersons();
 
-            
+
         }
 
         private void PopulatePersons()
@@ -191,7 +191,7 @@ namespace Hack.Frontend
                 //Add polygon graphic to graphics overlay
                 MapGraphics.Graphics.Add(polygonGraphic);
             }
-            
+
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
@@ -210,7 +210,7 @@ namespace Hack.Frontend
 
             //ScraperDatagrid.ItemsSource = WebScraper.Webscraper
 
-            
+
         }
 
         private void PointBox_Checked(object sender, RoutedEventArgs e)
@@ -305,6 +305,21 @@ namespace Hack.Frontend
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             MainTextBox.Text = webScraper.ArticleText;
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            string queryString = ("insert into NewsArticles (headline, url) values ('" + articles[int.Parse(ArticleNumberSelectTextbox.Text) - 1].Title + "','" + articles[int.Parse(ArticleNumberSelectTextbox.Text) - 1].URL + "')");
+            databaseWrapper.NonQuery(queryString);
+
+            var queryResult = databaseWrapper.ReaderQuery("SELECT * FROM NewsArticles");
+
+            NewsArticlesDatagrid.ItemsSource = queryResult[0];
+        }
+
+        private void ArticleCountTextbox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+
         }
     }
 }
